@@ -12,5 +12,30 @@ aa83988848 薗田光太郎
 
 ## 入出力結果
 
+```{R}
+(u = ((length(data.male)-1)*var(data.male)+(length(data.female)-1)*var(data.female))/(length(data.male)+length(data.female)-2))
+[1] 34.2765
+> (se=sqrt(s/length(data.male)+s/length(data.female)))
+[1] 3.161853
+> (t=(mean(data.male)-mean(data.female))/se)
+[1] 4.296136
+> t.test(data.male,data.female,var.equal=T,alternative="greater")
+
+        Two Sample t-test
+data:  data.male and data.female
+t = 4.2961, df = 12, p-value = 0.0005195
+alternative hypothesis: true difference in means is greater than 0
+95 percent confidence interval:
+ 7.948419      Inf
+sample estimates:
+mean of x mean of y
+ 173.8887  160.3050
+```
+varは不偏分散
+
+母平均の差がないとすると，t=4.2961で，p(T>t)=0.0005195
+
+母平均の差の95%信頼区間は 7.948419 < \mu1-\mu2 < Inf 
+
 ## 修正履歴
 
