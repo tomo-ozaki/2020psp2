@@ -12,24 +12,65 @@ aa83988848 薗田光太郎
 
 ## 入出力結果
 
-```{R}
-(u = ((length(data.male)-1)*var(data.male)+(length(data.female)-1)*var(data.female))/(length(data.male)+length(data.female)-2))
-[1] 34.2765
-> (se=sqrt(s/length(data.male)+s/length(data.female)))
-[1] 3.161853
-> (t=(mean(data.male)-mean(data.female))/se)
-[1] 4.296136
-> t.test(data.male,data.female,var.equal=T,alternative="greater")
+```
+data.male = c(183.87,
+179.54,
+173.62,
+167.83,
+174.38,
+171.38,
+169.39,
+171.10)
+data.female = c(166.90,
+165.62,
+152.40,
+163.24,
+161.39,
+152.28)
+```
 
-        Two Sample t-test
+```
+mu = 0
+conf.level = 0.95
+nx = length(data.male)
+ny = length(data.female)
+mx = mean(data.male)
+my = mean(data.female)
+ux = var(data.male)
+uy = var(data.female)
+df = nx+ny-2
+(u = ((nx-1)*ux+(ny-1)*uy)/df)
+```
+[1] 34.2765
+```
+(stderr=sqrt(u/nx+u/ny))
+```
+[1] 3.161853
+```
+(tstat=(mx-my-mu)/stderr)
+```
+[1] 4.296136
+```
+pval = pt(tstat, df, lower.tail = F)
+cint = c(tstat - qt(conf.level, df), Inf)
+cint <- mu + cint * stderr
+```
+
+```
+t.test(data.male,data.female,var.equal=T,alternative="greater")
+```
+
+```
+	Two Sample t-test
+
 data:  data.male and data.female
 t = 4.2961, df = 12, p-value = 0.0005195
 alternative hypothesis: true difference in means is greater than 0
 95 percent confidence interval:
  7.948419      Inf
 sample estimates:
-mean of x mean of y
- 173.8887  160.3050
+mean of x mean of y 
+ 173.8887  160.3050 
 ```
 varは不偏分散
 
