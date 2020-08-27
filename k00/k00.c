@@ -23,6 +23,7 @@ int main(void)
 
     while(fgets(buf,sizeof(buf),fp) != NULL){
         sscanf(buf,"%lf",&val);
+        printf("val = %lf\n", val);
         if(val>max_val){
             max_val = val;
         }
