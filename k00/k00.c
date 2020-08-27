@@ -26,11 +26,11 @@ int main(void)
         printf("val = %lf\n", val);
         if(val>max_val){
             max_val = val;
-            printf("max changed\n")
+            //  printf("max changed\n")
         }
         if(val<min_val){
             min_val = val;
-            printf("min changed\n")
+            //  printf("min changed\n")
         }
     }
 
