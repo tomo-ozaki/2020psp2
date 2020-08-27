@@ -30,6 +30,7 @@ int main(void)
         }
         if(val<min_val){
             min_val = val;
+            printf("min changed\n")
         }
     }
 
